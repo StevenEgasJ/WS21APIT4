@@ -1,4 +1,4 @@
-const port = 4011;
+const port = process.env.PORT || 4011;
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -12,7 +12,7 @@ app.use(express.json());
 
 const productRoutes = require('./routes/productRoutes');
 app.use('/productstore', productRoutes);
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Product pricing service is running on port ${port}`);
 });
 module.exports = app;
